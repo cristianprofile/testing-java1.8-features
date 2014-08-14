@@ -73,7 +73,8 @@ public class FlightServiceImplTest {
 		flight.setNumPassengers(180);
 		flight.setNumSeats(200);
 		if (fullFlight) {
-			flight.setNumSeats(1);
+			System.out.println("petaaa");
+			flight.setNumSeats(180);
 		}
 		flight.setPrice(new Double(2000));
 		flightCollection.add(flight);
@@ -123,8 +124,21 @@ public class FlightServiceImplTest {
 
 		long numberFullFlight = flightService
 				.numberFullFlight(flightCollection);
-		Assert.assertEquals(0, numberFullFlight);
+		Assert.assertEquals(1, numberFullFlight);
 
 	}
+	
+	@Test
+	public void numberFlightByDayOkAndFull() {
 
+		Assert.assertNotNull(flightService);
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, true);
+		long numberFlightByDayAndFull = flightService.numberFullFlightAndDate(flightCollection, date);
+		Assert.assertEquals(1, numberFlightByDayAndFull);
+	}
+
+	
+	
+	
 }
