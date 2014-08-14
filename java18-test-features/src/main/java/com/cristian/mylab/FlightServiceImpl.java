@@ -125,6 +125,15 @@ public class FlightServiceImpl implements FlightService {
 		return max;
 	}
 	
+	@Override
+	public int flightDateSum(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+	int sum = flightCollection.stream()
+				.filter(isDatetPredicate(date)).mapToInt(getNumPassengers()).sum();
+		return sum;
+	}
+	
 	
 	
 	

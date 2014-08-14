@@ -31,4 +31,6 @@ public interface FlightService {
 
 	public Optional<Flight> flightDateMaxNumSeats(Collection<Flight> flightCollection,
 			LocalDate date);
+
+	public int flightDateSum(Collection<Flight> flightCollection, LocalDate date);
 }
