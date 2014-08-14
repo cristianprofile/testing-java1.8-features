@@ -1,4 +1,4 @@
-testing-java1.8-features I Love functional programming
+Testing java 1.8 : I Love functional programming
 ========================
 
 Testing java 1.8 new features with dates and lambda expression using collections streams.
