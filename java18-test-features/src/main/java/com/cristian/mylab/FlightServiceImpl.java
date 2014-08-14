@@ -2,7 +2,11 @@ package com.cristian.mylab;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
@@ -21,6 +25,18 @@ public class FlightServiceImpl implements FlightService {
 	{
 		return vuelo -> vuelo.getDate().compareTo(date) == 0;
 	}
+	
+	ToIntFunction<Flight>  getNumPassengers(){
+		return flight->flight.getNumPassengers();
+	}
+	
+	Function<Flight, Integer>  getNumSeats(){
+		return flight->flight.getNumSeats();
+	}
+	 
+	
+	
+	
 
 	@Override
 	public long numberFlightByDay(LocalDate date,
@@ -68,4 +84,50 @@ public class FlightServiceImpl implements FlightService {
 		return flightCollection.stream().anyMatch(fullFlightPredicate().and(isDatetPredicate(date)));
 	}
 
+	
+	@Override
+	public Optional<Flight> flightDateMinPrice(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Optional<Flight> min = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.min(Comparator.comparing(Flight::getPrice));
+		return min;
+	}
+	
+	@Override
+	public Optional<Flight> flightDateMaxPrice(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.max(Comparator.comparing(Flight::getPrice));
+		return max;
+	}
+	
+	@Override
+	public Optional<Flight> flightDateMaxNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.max(Comparator.comparingInt(getNumPassengers()));
+		return max;
+	}
+	
+	@Override
+	public Optional<Flight> flightDateMaxNumSeats(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.max(Comparator.comparing(getNumSeats()));
+		return max;
+	}
+	
+	
+	
+	
+	
+	
 }

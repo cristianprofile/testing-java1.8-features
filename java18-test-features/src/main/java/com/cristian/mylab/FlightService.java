@@ -2,6 +2,7 @@ package com.cristian.mylab;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Optional;
 
 public interface FlightService {
 
@@ -18,4 +19,16 @@ public interface FlightService {
 
 	public boolean fullFlightAndDateAnyMatch(
 			Collection<Flight> flightCollection, LocalDate date);
+
+	public Optional<Flight> flightDateMinPrice(Collection<Flight> flightCollection,
+			LocalDate date);
+
+	public Optional<Flight> flightDateMaxPrice(Collection<Flight> flightCollection,
+			LocalDate date);
+
+	public Optional<Flight> flightDateMaxNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public Optional<Flight> flightDateMaxNumSeats(Collection<Flight> flightCollection,
+			LocalDate date);
 }
