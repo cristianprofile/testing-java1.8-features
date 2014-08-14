@@ -47,5 +47,25 @@ public class FlightServiceImpl implements FlightService {
 				fullFlightPredicate().and(isDatetPredicate(date)));
 		return filter.count();
 	}
+	
+	
+	
+	@Override
+	public boolean fullFlightAndDateAllMatch(Collection<Flight> flightCollection,
+			LocalDate date) {
+		// using all match operator of a stream
+		 
+		return flightCollection.stream().allMatch(fullFlightPredicate().and(isDatetPredicate(date)));
+	}
+	
+	
+	@Override
+	public boolean fullFlightAndDateAnyMatch(Collection<Flight> flightCollection,
+			LocalDate date) {
+		
+		// using any match operator of a stream
+		 
+		return flightCollection.stream().anyMatch(fullFlightPredicate().and(isDatetPredicate(date)));
+	}
 
 }

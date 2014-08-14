@@ -10,6 +10,12 @@ public interface FlightService {
 
 	public long numberFullFlight(Collection<Flight> flightCollection);
 
-	long numberFullFlightAndDate(Collection<Flight> flightCollection,
+	public long numberFullFlightAndDate(Collection<Flight> flightCollection,
 			LocalDate date);
+
+	public boolean fullFlightAndDateAllMatch(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public boolean fullFlightAndDateAnyMatch(
+			Collection<Flight> flightCollection, LocalDate date);
 }

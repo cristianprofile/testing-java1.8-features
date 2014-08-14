@@ -137,6 +137,40 @@ public class FlightServiceImplTest {
 		long numberFlightByDayAndFull = flightService.numberFullFlightAndDate(flightCollection, date);
 		Assert.assertEquals(1, numberFlightByDayAndFull);
 	}
+	
+	
+	@Test
+	public void fullFlightAndDateAllMatchFalse() {
+
+		Assert.assertNotNull(flightService);
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, true);
+		boolean allMatch = flightService.fullFlightAndDateAllMatch(flightCollection, date);
+		Assert.assertFalse(allMatch);
+	}
+	
+	
+	@Test
+	public void fullFlightAndDateAnyMatchTrue() {
+
+		Assert.assertNotNull(flightService);
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, true);
+		boolean anyMatch = flightService.fullFlightAndDateAnyMatch(flightCollection, date);
+		Assert.assertTrue(anyMatch);
+	}
+	
+	@Test
+	public void fullFlightAndDateAnyMatchFalse() {
+
+		Assert.assertNotNull(flightService);
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		boolean anyMatch = flightService.fullFlightAndDateAnyMatch(flightCollection, date);
+		Assert.assertFalse(anyMatch);
+	}
+	
+	
 
 	
 	
