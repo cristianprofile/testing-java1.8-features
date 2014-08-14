@@ -3,6 +3,7 @@ package com.cristian.mylab;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 public interface FlightService {
 
@@ -32,5 +33,8 @@ public interface FlightService {
 	public Optional<Flight> flightDateMaxNumSeats(Collection<Flight> flightCollection,
 			LocalDate date);
 
-	public int flightDateSum(Collection<Flight> flightCollection, LocalDate date);
+	public int flightDateNumPassengersSum(Collection<Flight> flightCollection, LocalDate date);
+
+	public OptionalDouble flightDatePriceAverage(Collection<Flight> flightCollection,
+			LocalDate date);
 }

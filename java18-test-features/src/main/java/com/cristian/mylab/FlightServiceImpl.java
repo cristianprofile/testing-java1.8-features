@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
@@ -126,13 +127,25 @@ public class FlightServiceImpl implements FlightService {
 	}
 	
 	@Override
-	public int flightDateSum(
+	public int flightDateNumPassengersSum(
 			Collection<Flight> flightCollection, LocalDate date) {
 
 	int sum = flightCollection.stream()
 				.filter(isDatetPredicate(date)).mapToInt(getNumPassengers()).sum();
 		return sum;
 	}
+	
+	
+	@Override
+	public OptionalDouble flightDatePriceAverage(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+	 OptionalDouble average = flightCollection.stream()
+				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice).average();
+		return average;
+	}
+	
+	
 	
 	
 	

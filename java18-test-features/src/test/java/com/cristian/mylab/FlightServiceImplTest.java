@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -131,7 +132,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void numberFlightByDayOkAndFull() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		long numberFlightByDayAndFull = flightService.numberFullFlightAndDate(flightCollection, date);
@@ -142,7 +142,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void fullFlightAndDateAllMatchFalse() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		boolean allMatch = flightService.fullFlightAndDateAllMatch(flightCollection, date);
@@ -153,7 +152,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void fullFlightAndDateAnyMatchTrue() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		boolean anyMatch = flightService.fullFlightAndDateAnyMatch(flightCollection, date);
@@ -163,7 +161,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void fullFlightAndDateAnyMatchFalse() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		boolean anyMatch = flightService.fullFlightAndDateAnyMatch(flightCollection, date);
@@ -173,7 +170,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMinPrice() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		Optional<Flight> flightDateMinPrice = flightService.flightDateMinPrice(flightCollection, date);
@@ -185,7 +181,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMinPriceEmptyFlightList() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = new ArrayList<Flight>();
 		Optional<Flight> flightDateMinPrice = flightService.flightDateMinPrice(flightCollection, date);
@@ -196,7 +191,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMaxPrice() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		Optional<Flight> flightDateMaxPrice = flightService.flightDateMaxPrice(flightCollection, date);
@@ -208,7 +202,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMaxPriceEmptyFlightList() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = new ArrayList<Flight>();
 		//testing new optional object, null pointer has death
@@ -222,7 +215,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMaxNumPassengers() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		Optional<Flight> flightDateMaxPrice = flightService.flightDateMaxNumPassengers(flightCollection, date);
@@ -234,7 +226,6 @@ public class FlightServiceImplTest {
 	@Test
 	public void flightDateMaxNumSeats() {
 
-		Assert.assertNotNull(flightService);
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		Optional<Flight> flightDateMaxPrice = flightService.flightDateMaxNumSeats(flightCollection, date);
@@ -242,6 +233,33 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(flightDateMaxPrice.get().getDestination().equals("Madrid"));
 		
 	}
+	
+	
+	@Test
+	public void flightDateNumPassengersSum() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		int flightDateNumPassengersSum = flightService.flightDateNumPassengersSum(flightCollection, date);
+		Assert.assertEquals(flightDateNumPassengersSum, 739);
+		
+	}
+	
+	@Test
+	public void flightDatePriceAverage() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
+		Assert.assertTrue(flightDatePriceAverage.isPresent());
+		Assert.assertTrue(flightDatePriceAverage.getAsDouble()==1050);
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	
