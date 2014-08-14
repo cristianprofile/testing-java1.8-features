@@ -1,7 +1,7 @@
-testing-java1.8-features
+testing-java1.8-features I Love functional programming
 ========================
 
-testing java 1.8 new features with dates and lambda expression using collections streams
+Testing java 1.8 new features with dates and lambda expression using collections streams.
 
 -  Filter a collection with lambda expression using boolean predicate
 -  Reuse predicates with and or and not logical operator
