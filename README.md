@@ -9,16 +9,15 @@ Testing java 1.8 new features with dates and lambda expression using collections
 				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
  - Example: 
-``` 
+	` 
 	 Stream<Flight> filter = flightCollection.stream().filter(
 	 fullFlightPredicate().and(isDatetPredicate(date)));
-	```
-
+	`
 	
 -  Use any and all operator to streams (boolean operation)
  - Example: ```flightCollection.stream().anyMatch(
 				fullFlightPredicate().and(isDatetPredicate(date)));
-flightCollection.stream().allMatch(
+		flightCollection.stream().allMatch(
 				fullFlightPredicate().and(isDatetPredicate(date))); ``` 
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
