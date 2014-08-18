@@ -8,10 +8,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
 				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
 	```Predicate<Flight> fullFlightPredicate()
-
-	{
 		return vuelo -> vuelo.getNumPassengers().equals(vuelo.getNumSeats());
-	}```
+	```
 
 	
 -  Use any and all operator to streams (boolean operation)
