@@ -26,8 +26,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
 -  Use mapToInt and Map to double to test sum and average calculation operation
  -  `flightCollection.stream().filter(isDatetPredicate(date))
-				.mapToInt(getNumPassengers()).sum();
- - OptionalDouble average = flightCollection.stream()
+				.mapToInt(getNumPassengers()).sum();`
+ - `OptionalDouble average = flightCollection.stream()
 				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice)
 				.average();`
 -  Added to strings method to Flight and Duration Bean.
