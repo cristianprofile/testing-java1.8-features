@@ -20,8 +20,15 @@ Testing java 1.8 new features with dates and lambda expression using collections
 		flightCollection.stream().allMatch(
 				fullFlightPredicate().and(isDatetPredicate(date))); ``` 
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
+ - Example: ```Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.max(byNumPassengers.thenComparing(byNumSeats));```  
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
 -  Use mapToInt and Map to double to test sum and average calculation operation
+ - Example: ```flightCollection.stream().filter(isDatetPredicate(date))
+				.mapToInt(getNumPassengers()).sum();OptionalDouble average = flightCollection.stream()
+				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice)
+				.average();```
 -  Added to strings method to Flight and Duration Bean.
 -  Added Comparator function to order and calculate max and min value with thenComparing. 
    Example: 
