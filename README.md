@@ -5,7 +5,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
 
 -  Filter a collection with lambda expression using boolean predicate
  - Example:
-   `flightCollection.stream().filter(
+     `flightCollection.stream().filter(
 				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
  - Example: 
