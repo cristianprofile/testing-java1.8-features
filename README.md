@@ -11,14 +11,14 @@ Testing java 1.8 new features with dates and lambda expression using collections
 
 	{
 		return vuelo -> vuelo.getNumPassengers().equals(vuelo.getNumSeats());
-	}
+	}`
 
-	Predicate<Flight> isDatetPredicate(LocalDate date)
+	`Predicate<Flight> isDatetPredicate(LocalDate date)
 
 	{
 		return vuelo -> vuelo.getDate().compareTo(date) == 0;
-	}
-	 Stream<Flight> filter = flightCollection.stream().filter(
+	}`
+	 `Stream<Flight> filter = flightCollection.stream().filter(
 	 fullFlightPredicate().and(isDatetPredicate(date)));`
 -  Use any and all operator to streams (boolean operation)
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
