@@ -4,8 +4,8 @@ Testing java 1.8 : I Love functional programming
 Testing java 1.8 new features with dates and lambda expression using collections streams.
 
 -  Filter a collection with lambda expression using boolean predicate
-   'flightCollection.stream().filter(
-				vuelo -> vuelo.getDate().equals((date)));'
+   `flightCollection.stream().filter(
+				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
 	`Predicate<Flight> fullFlightPredicate()
 
