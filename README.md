@@ -4,19 +4,22 @@ Testing java 1.8 : I Love functional programming
 Testing java 1.8 new features with dates and lambda expression using collections streams.
 
 -  Filter a collection with lambda expression using boolean predicate
+ - Example:
    `flightCollection.stream().filter(
 				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
-	```Predicate<Flight> fullFlightPredicate()
-		return vuelo -> vuelo.getNumPassengers().equals(vuelo.getNumSeats());
-	Predicate<Flight> isDatetPredicate(LocalDate date)
-		return vuelo -> vuelo.getDate().compareTo(date) == 0;
+ - Example: 
+``` 
 	 Stream<Flight> filter = flightCollection.stream().filter(
 	 fullFlightPredicate().and(isDatetPredicate(date)));
 	```
 
 	
 -  Use any and all operator to streams (boolean operation)
+ - Example: ```flightCollection.stream().anyMatch(
+				fullFlightPredicate().and(isDatetPredicate(date)));
+flightCollection.stream().allMatch(
+				fullFlightPredicate().and(isDatetPredicate(date))); ``` 
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
 -  Use mapToInt and Map to double to test sum and average calculation operation
