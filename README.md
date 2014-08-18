@@ -32,8 +32,7 @@ OptionalDouble average = flightCollection.stream()
 				.average();`
 -  Added to strings method to Flight and Duration Bean.
 -  Added Comparator function to order and calculate max and min value with thenComparing. 
-    
-           `Comparator<Flight> byNumPassengers = (f1, f2) -> f1.getNumPassengers()
+ -`Comparator<Flight> byNumPassengers = (f1, f2) -> f1.getNumPassengers()
 			.compareTo(f2.getNumPassengers());
 	     Comparator<Flight> byNumSeats = (f1, f2) -> f1.getNumSeats().compareTo(
 			f2.getNumSeats());
