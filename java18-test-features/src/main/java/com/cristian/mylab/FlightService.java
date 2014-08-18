@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.stream.Stream;
 
 public interface FlightService {
 
@@ -33,8 +34,24 @@ public interface FlightService {
 	public Optional<Flight> flightDateMaxNumSeats(Collection<Flight> flightCollection,
 			LocalDate date);
 
+	public Optional<Flight> flightDateMaxNumSeatsAndNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date);
+	
+	public Optional<Flight> flightDateMinNumSeatsAndNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date);
+	
 	public int flightDateNumPassengersSum(Collection<Flight> flightCollection, LocalDate date);
 
 	public OptionalDouble flightDatePriceAverage(Collection<Flight> flightCollection,
 			LocalDate date);
+
+	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public Duration flightDateReduceByDuration(Collection<Flight> flightCollection,
+			LocalDate date);
+
+	
+
+	
 }
