@@ -9,6 +9,10 @@ Testing java 1.8 new features with dates and lambda expression using collections
 -  Reuse predicates with and or and not logical operator
 	```Predicate<Flight> fullFlightPredicate()
 		return vuelo -> vuelo.getNumPassengers().equals(vuelo.getNumSeats());
+	Predicate<Flight> isDatetPredicate(LocalDate date)
+		return vuelo -> vuelo.getDate().compareTo(date) == 0;
+	 Stream<Flight> filter = flightCollection.stream().filter(
+	 fullFlightPredicate().and(isDatetPredicate(date)));
 	```
 
 	
