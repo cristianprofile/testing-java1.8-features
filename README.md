@@ -12,7 +12,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
 -  Added to strings method to Flight and Duration Bean.
 -  Added Comparator function to order and calculate max and min value with thenComparing. 
    Example: 
-            `````java flightCollection.stream().filter(isDatetPredicate(date)).min(byNumPassengers.thenComparing(byNumSeats)); 
-				    flightCollection.stream().sorted(byNumPassengers.thenComparing(byNumSeats));```
+            ` flightCollection.stream().filter(isDatetPredicate(date)).min(byNumPassengers.thenComparing(byNumSeats)); 
+				    flightCollection.stream().sorted(byNumPassengers.thenComparing(byNumSeats));`
 -  Added Reduce a flight collection. Reduce operation create an "sum iterate operation for each element". We will calculate sum of all flights using Duration class
    
