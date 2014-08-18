@@ -42,5 +42,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
 					Integer hor = x.getHours() + y.getHours();
 					return new Duration(hor + min / 60, min % 60);
 				});
-		return reduceDuration;`  
-   
+		return reduceDuration;` 
+
+- added flightDateAddTenPercentAditionalPrice foreach stream iterate
+ - `Collection<Flight> flightCollection, LocalDate date) {flightCollection.stream().forEach(addTenPercentAditionalPrice());`
