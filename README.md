@@ -7,7 +7,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
    'flightCollection.stream().filter(
 				vuelo -> vuelo.getDate().equals((date)));'
 -  Reuse predicates with and or and not logical operator
-	'Predicate<Flight> fullFlightPredicate()
+	`Predicate<Flight> fullFlightPredicate()
 
 	{
 		return vuelo -> vuelo.getNumPassengers().equals(vuelo.getNumSeats());
@@ -19,7 +19,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
 		return vuelo -> vuelo.getDate().compareTo(date) == 0;
 	}
 	 Stream<Flight> filter = flightCollection.stream().filter(
-	 fullFlightPredicate().and(isDatetPredicate(date)));'
+	 fullFlightPredicate().and(isDatetPredicate(date)));`
 -  Use any and all operator to streams (boolean operation)
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
