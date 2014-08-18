@@ -56,6 +56,26 @@ public Duration getDuration() {
 public void setDuration(Duration duration) {
 	this.duration = duration;
 }
+@Override
+public String toString() {
+	StringBuilder builder = new StringBuilder();
+	builder.append("Flight [code=");
+	builder.append(code);
+	builder.append(", destination=");
+	builder.append(destination);
+	builder.append(", date=");
+	builder.append(date);
+	builder.append(", numPassengers=");
+	builder.append(numPassengers);
+	builder.append(", numSeats=");
+	builder.append(numSeats);
+	builder.append(", price=");
+	builder.append(price);
+	builder.append(", duration=");
+	builder.append(duration);
+	builder.append("]");
+	return builder.toString();
+}
  
  
  

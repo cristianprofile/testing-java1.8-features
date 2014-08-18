@@ -15,6 +15,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class FlightServiceImpl implements FlightService {
 
+	Comparator<Flight> byNumPassengers = (f1, f2) -> f1.getNumPassengers()
+			.compareTo(f2.getNumPassengers());
+
+	Comparator<Flight> byNumSeats = (f1, f2) -> f1.getNumSeats().compareTo(
+			f2.getNumSeats());
+
 	Predicate<Flight> fullFlightPredicate()
 
 	{
@@ -26,18 +32,14 @@ public class FlightServiceImpl implements FlightService {
 	{
 		return vuelo -> vuelo.getDate().compareTo(date) == 0;
 	}
-	
-	ToIntFunction<Flight>  getNumPassengers(){
-		return flight->flight.getNumPassengers();
+
+	ToIntFunction<Flight> getNumPassengers() {
+		return flight -> flight.getNumPassengers();
 	}
-	
-	Function<Flight, Integer>  getNumSeats(){
-		return flight->flight.getNumSeats();
+
+	Function<Flight, Integer> getNumSeats() {
+		return flight -> flight.getNumSeats();
 	}
-	 
-	
-	
-	
 
 	@Override
 	public long numberFlightByDay(LocalDate date,
@@ -64,28 +66,26 @@ public class FlightServiceImpl implements FlightService {
 				fullFlightPredicate().and(isDatetPredicate(date)));
 		return filter.count();
 	}
-	
-	
-	
+
 	@Override
-	public boolean fullFlightAndDateAllMatch(Collection<Flight> flightCollection,
-			LocalDate date) {
+	public boolean fullFlightAndDateAllMatch(
+			Collection<Flight> flightCollection, LocalDate date) {
 		// using all match operator of a stream
-		 
-		return flightCollection.stream().allMatch(fullFlightPredicate().and(isDatetPredicate(date)));
-	}
-	
-	
-	@Override
-	public boolean fullFlightAndDateAnyMatch(Collection<Flight> flightCollection,
-			LocalDate date) {
-		
-		// using any match operator of a stream
-		 
-		return flightCollection.stream().anyMatch(fullFlightPredicate().and(isDatetPredicate(date)));
+
+		return flightCollection.stream().allMatch(
+				fullFlightPredicate().and(isDatetPredicate(date)));
 	}
 
-	
+	@Override
+	public boolean fullFlightAndDateAnyMatch(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		// using any match operator of a stream
+
+		return flightCollection.stream().anyMatch(
+				fullFlightPredicate().and(isDatetPredicate(date)));
+	}
+
 	@Override
 	public Optional<Flight> flightDateMinPrice(
 			Collection<Flight> flightCollection, LocalDate date) {
@@ -95,7 +95,7 @@ public class FlightServiceImpl implements FlightService {
 				.min(Comparator.comparing(Flight::getPrice));
 		return min;
 	}
-	
+
 	@Override
 	public Optional<Flight> flightDateMaxPrice(
 			Collection<Flight> flightCollection, LocalDate date) {
@@ -105,7 +105,7 @@ public class FlightServiceImpl implements FlightService {
 				.max(Comparator.comparing(Flight::getPrice));
 		return max;
 	}
-	
+
 	@Override
 	public Optional<Flight> flightDateMaxNumPassengers(
 			Collection<Flight> flightCollection, LocalDate date) {
@@ -115,7 +115,7 @@ public class FlightServiceImpl implements FlightService {
 				.max(Comparator.comparingInt(getNumPassengers()));
 		return max;
 	}
-	
+
 	@Override
 	public Optional<Flight> flightDateMaxNumSeats(
 			Collection<Flight> flightCollection, LocalDate date) {
@@ -125,31 +125,72 @@ public class FlightServiceImpl implements FlightService {
 				.max(Comparator.comparing(getNumSeats()));
 		return max;
 	}
-	
+
 	@Override
-	public int flightDateNumPassengersSum(
+	public Optional<Flight> flightDateMaxNumSeatsAndNumPassengers(
 			Collection<Flight> flightCollection, LocalDate date) {
 
-	int sum = flightCollection.stream()
-				.filter(isDatetPredicate(date)).mapToInt(getNumPassengers()).sum();
+		Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.max(byNumPassengers.thenComparing(byNumSeats));
+		return max;
+	}
+
+	@Override
+	public Optional<Flight> flightDateMinNumSeatsAndNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Optional<Flight> max = flightCollection.stream()
+				.filter(isDatetPredicate(date))
+				.min(byNumPassengers.thenComparing(byNumSeats));
+		return max;
+	}
+
+	@Override
+	public int flightDateNumPassengersSum(Collection<Flight> flightCollection,
+			LocalDate date) {
+
+		int sum = flightCollection.stream().filter(isDatetPredicate(date))
+				.mapToInt(getNumPassengers()).sum();
 		return sum;
 	}
-	
-	
+
 	@Override
 	public OptionalDouble flightDatePriceAverage(
 			Collection<Flight> flightCollection, LocalDate date) {
 
-	 OptionalDouble average = flightCollection.stream()
-				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice).average();
+		OptionalDouble average = flightCollection.stream()
+				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice)
+				.average();
 		return average;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Stream<Flight> sortedFlights = flightCollection.stream().sorted(
+				byNumPassengers.thenComparing(byNumSeats));
+
+		return sortedFlights;
+	}
+
+	/**
+	 * Reduce a flight collection. Reduce operation create an "add iterate" operation for each element
+	 * In this example we are going to sum all duration flights
+	 */
+	@Override
+	public Duration flightDateReduceByDuration(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		Duration reduceDuration = flightCollection.stream()
+				.map(flight -> flight.getDuration())
+				.reduce(new Duration(0, 0), (x, y) -> {
+					Integer min = x.getMinutes() + y.getMinutes();
+					Integer hor = x.getHours() + y.getHours();
+					return new Duration(hor + min / 60, min % 60);
+				});
+		return reduceDuration;
+	}
+
 }
