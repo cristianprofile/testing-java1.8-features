@@ -302,27 +302,44 @@ public class FlightServiceImplTest {
 		Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers = flightService
 				.flightDateOrderByNumSeatsAndNumPassengers(flightCollection,
 						date);
-		flightDateOrderByNumSeatsAndNumPassengers.forEach(flight -> {
-			System.out.println(flight);
-		});
 
 	}
-	
+
 	@Test
 	public void flightDateReduceByDuration() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		Duration flightDateReduceByDuration = flightService
-				.flightDateReduceByDuration(flightCollection,
-						date);
-		System.out.println(flightDateReduceByDuration);
+				.flightDateReduceByDuration(flightCollection, date);
 		Assert.assertTrue(flightDateReduceByDuration.getHours() == 11);
 		Assert.assertTrue(flightDateReduceByDuration.getMinutes() == 0);
 	}
+
+	@Test
+	public void flightDateflightDateAddTenPercentAditionalPrice() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, true);
+		flightService.flightDateAddTenPercentAditionalPrice(flightCollection,
+				date);
 	
-	
-	
-	
+		flightCollection.forEach(flight -> {
+			if (flight.getDestination().equals("Japan")) {
+
+				Assert.assertTrue(flight.getPrice() == 2200);
+			}
+			else
+			{
+				if (flight.getDestination().equals("Madrid")) {
+
+					Assert.assertTrue(flight.getPrice() == 880);
+				}
+				
+			}
+
+		});
+
+	}
 
 }

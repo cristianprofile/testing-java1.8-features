@@ -51,6 +51,9 @@ public interface FlightService {
 	public Duration flightDateReduceByDuration(Collection<Flight> flightCollection,
 			LocalDate date);
 
+	public void flightDateAddTenPercentAditionalPrice(
+			Collection<Flight> flightCollection, LocalDate date);
+
 	
 
 	

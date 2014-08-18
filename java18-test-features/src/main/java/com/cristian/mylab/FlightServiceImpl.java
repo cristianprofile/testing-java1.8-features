@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
@@ -14,6 +16,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FlightServiceImpl implements FlightService {
+
+	BinaryOperator<Duration> sumTime() {
+		return (x, y) -> {
+			Integer min = x.getMinutes() + y.getMinutes();
+			Integer hor = x.getHours() + y.getHours();
+			return new Duration(hor + min / 60, min % 60);
+		};
+	}
+
+	Consumer<Flight> addTenPercentAditionalPrice() {
+		return flight -> flight.setPrice(flight.getPrice()
+				+ (flight.getPrice() * 0.1));
+	}
 
 	Comparator<Flight> byNumPassengers = (f1, f2) -> f1.getNumPassengers()
 			.compareTo(f2.getNumPassengers());
@@ -34,6 +49,7 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	ToIntFunction<Flight> getNumPassengers() {
+
 		return flight -> flight.getNumPassengers();
 	}
 
@@ -46,7 +62,7 @@ public class FlightServiceImpl implements FlightService {
 			Collection<Flight> flightCollection) {
 		// Testing filter method 1, it used to filter an stream
 		Stream<Flight> filter = flightCollection.stream().filter(
-				vuelo -> vuelo.getDate().equals((date)));
+				flight -> flight.getDate().equals((date)));
 		return filter.count();
 	}
 
@@ -176,8 +192,9 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	/**
-	 * Reduce a flight collection. Reduce operation create an "add iterate" operation for each element
-	 * In this example we are going to sum all duration flights
+	 * Reduce a flight collection. Reduce operation create an "add iterate"
+	 * operation for each element In this example we are going to sum all
+	 * duration flights
 	 */
 	@Override
 	public Duration flightDateReduceByDuration(
@@ -185,12 +202,16 @@ public class FlightServiceImpl implements FlightService {
 
 		Duration reduceDuration = flightCollection.stream()
 				.map(flight -> flight.getDuration())
-				.reduce(new Duration(0, 0), (x, y) -> {
-					Integer min = x.getMinutes() + y.getMinutes();
-					Integer hor = x.getHours() + y.getHours();
-					return new Duration(hor + min / 60, min % 60);
-				});
+				.reduce(new Duration(0, 0), sumTime());
 		return reduceDuration;
+
+	}
+
+	@Override
+	public void flightDateAddTenPercentAditionalPrice(
+			Collection<Flight> flightCollection, LocalDate date) {
+		flightCollection.stream().forEach(addTenPercentAditionalPrice());
+
 	}
 
 }
