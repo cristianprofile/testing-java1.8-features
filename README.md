@@ -35,4 +35,12 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `flightCollection.stream().filter(isDatetPredicate(date)).min(byNumPassengers.thenComparing(byNumSeats));`
  - `flightCollection.stream().sorted(byNumPassengers.thenComparing(byNumSeats));`
 -  Added Reduce a flight collection. Reduce operation create an "sum iterate operation for each element". We will calculate sum of all flights using Duration class
+ - `Duration reduceDuration = flightCollection.stream()
+				.map(flight -> flight.getDuration())
+				.reduce(new Duration(0, 0), (x, y) -> {
+					Integer min = x.getMinutes() + y.getMinutes();
+					Integer hor = x.getHours() + y.getHours();
+					return new Duration(hor + min / 60, min % 60);
+				});
+		return reduceDuration;`  
    
