@@ -45,4 +45,4 @@ Testing java 1.8 new features with dates and lambda expression using collections
 		return reduceDuration;` 
 
 - Added flightDateAddTenPercentAditionalPrice foreach stream iterate
- - `Collection<Flight> flightCollection, LocalDate date) {flightCollection.stream().forEach(addTenPercentAditionalPrice());`
+ - `flightCollection.stream().forEach(addTenPercentAditionalPrice());`
