@@ -70,6 +70,12 @@ public interface FlightService {
 	public Map<String, Duration> flightDateGenerateMapDestionationDuration(
 			Collection<Flight> flightCollection, LocalDate date);
 
+	public Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats(
+			Collection<Flight> flightCollection, LocalDate date);
+
 	
 
 

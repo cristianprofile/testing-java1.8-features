@@ -413,5 +413,42 @@ public class FlightServiceImplTest {
 	}
 	
 	
+	@Test
+	public void flightDateGenerateMapPriceLowCost() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		//low cost is a flight cost less or equal 800 euros
+	    Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost = flightService
+				.flightDateGenerateMapPriceLowCost(flightCollection, date);
+		Assert.assertTrue(!flightDateGenerateMapPriceLowCost.isEmpty());
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.size() == 2);
+		//assert to test low cost flight and premium flight are correct in the map
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream().anyMatch(flight->flight.getDestination().equals("Madrid")));
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream().anyMatch(flight->flight.getDestination().equals("Paris")));
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(false).stream().filter(flight->flight.getDestination().equals("Japan")|| flight.getDestination().equals("London")).count()==2);
+	}
+	
+	@Test
+	public void flightDateGenerateMapGroupByNumSeats() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		//low cost is a flight cost less or equal 800 euros
+	    Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats = flightService
+				.flightDateGenerateMapGroupByNumSeats(flightCollection, date);
+		Assert.assertTrue(!flightDateGenerateMapGroupByNumSeats.isEmpty());
+		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.size() == 2);
+		//assert to test flight of 200 seats are 3 and 255 seats there is only one object in the list
+		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(200).size()==3);
+		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(255).size()==1);
+		//assert to test flight of 200 seats are 3 and 255 seats there is only one object in the list
+		Assert.assertFalse(flightDateGenerateMapGroupByNumSeats.containsKey(344));
+	}
+
+	
+
+	
+	
 
 }

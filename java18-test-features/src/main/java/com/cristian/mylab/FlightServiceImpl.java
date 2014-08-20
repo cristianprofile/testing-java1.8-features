@@ -260,12 +260,35 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public Map<String, Duration> flightDateGenerateMapDestionationDuration(
 			Collection<Flight> flightCollection, LocalDate date) {
-
 		return flightCollection
 				.stream()
 				.filter(isDatetPredicate(date))
 				.collect(Collectors.toMap((Flight flight) -> flight.getDestination(), (
 						Flight flight) ->flight.getDuration()));
+
+	}
+	
+	//*********TRANSFORM COLLECTIONS TO SET LIST OR NEW MAP with grouping by and partition
+	
+	
+	
+	public Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost(
+			Collection<Flight> flightCollection, LocalDate date) {
+		return flightCollection
+				.stream()
+				.filter(isDatetPredicate(date))
+				.collect(Collectors.partitioningBy(flight->flight.getPrice()<=800));
+
+	}
+	
+	
+	@Override
+	public Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats(
+			Collection<Flight> flightCollection, LocalDate date) {
+		return flightCollection
+				.stream()
+				.filter(isDatetPredicate(date))
+				.collect(Collectors.groupingBy(flight->flight.getNumSeats()));
 
 	}
 }
