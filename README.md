@@ -44,5 +44,5 @@ Testing java 1.8 new features with dates and lambda expression using collections
 				});
 		return reduceDuration;` 
 
-- Added flightDateAddTenPercentAditionalPrice foreach stream iterate
+- Added foreach consumer to be able to make change to elements of stream. Example method flightDateAddTenPercentAditionalPrice foreach stream iterate
  - `flightCollection.stream().forEach(addTenPercentAditionalPrice());`
