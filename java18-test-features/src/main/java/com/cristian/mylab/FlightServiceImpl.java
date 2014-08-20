@@ -291,4 +291,14 @@ public class FlightServiceImpl implements FlightService {
 				.collect(Collectors.groupingBy(flight->flight.getNumSeats()));
 
 	}
+	
+	@Override
+	public Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet(
+			Collection<Flight> flightCollection, LocalDate date) {
+		return flightCollection
+				.stream()
+				.filter(isDatetPredicate(date))
+				.collect(Collectors.groupingBy(flight->flight.getNumSeats(),Collectors.toSet()));
+
+	}
 }

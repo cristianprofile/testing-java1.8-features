@@ -76,6 +76,9 @@ public interface FlightService {
 	public Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats(
 			Collection<Flight> flightCollection, LocalDate date);
 
+	public Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet(
+			Collection<Flight> flightCollection, LocalDate date);
+
 	
 
 
