@@ -47,6 +47,9 @@ public interface FlightService {
 
 	public OptionalDouble flightDatePriceAverage(Collection<Flight> flightCollection,
 			LocalDate date);
+	
+	public double flightDatePriceAverageOtherWay(Collection<Flight> flightCollection,
+			LocalDate date);
 
 	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
 			Collection<Flight> flightCollection, LocalDate date);
@@ -66,6 +69,12 @@ public interface FlightService {
 
 	public Map<String, Duration> flightDateGenerateMapDestionationDuration(
 			Collection<Flight> flightCollection, LocalDate date);
+
+	
+
+
+
+
 
 	
 

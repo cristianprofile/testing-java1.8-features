@@ -296,6 +296,21 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(flightDatePriceAverage.getAsDouble() == 1050);
 
 	}
+	
+	@Test
+	public void flightDatePriceAverageOtherWay() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		double flightDatePriceVariance = flightService
+				.flightDatePriceAverageOtherWay(flightCollection, date);
+		System.out.println(flightDatePriceVariance);
+		Assert.assertTrue(flightDatePriceVariance == 1050);
+
+	}
+		
+	
+	
 
 	@Test
 	public void flightDateOrderByNumSeatsAndPassengers() {

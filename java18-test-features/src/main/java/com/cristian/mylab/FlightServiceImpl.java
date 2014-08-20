@@ -183,7 +183,20 @@ public class FlightServiceImpl implements FlightService {
 				.filter(isDatetPredicate(date)).mapToDouble(Flight::getPrice)
 				.average();
 		return average;
+	} 
+	
+	
+	@Override
+	public double flightDatePriceAverageOtherWay(
+			Collection<Flight> flightCollection, LocalDate date) {
+		//using object summary statics return max min sum and average 
+		return flightCollection.stream()
+				.filter(isDatetPredicate(date)).mapToDouble(flight->flight.getPrice()).summaryStatistics().getAverage();
+	
 	}
+	
+	
+	
 
 	@Override
 	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
@@ -198,8 +211,6 @@ public class FlightServiceImpl implements FlightService {
 				.sorted(Comparator.comparing(Flight::getNumPassengers)
 						.thenComparing(Flight::getNumSeats))
 				.forEach(flight -> System.out.println(flight));
-		;
-
 		return sortedFlights;
 	}
 
