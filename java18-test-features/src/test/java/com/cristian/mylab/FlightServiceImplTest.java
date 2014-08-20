@@ -3,8 +3,11 @@ package com.cristian.mylab;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
@@ -341,5 +344,49 @@ public class FlightServiceImplTest {
 		});
 
 	}
+	
+	
+	@Test
+	public void flightDateGetListDuration() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		 List<Duration> flightDateGetListDuration = flightService
+				.flightDateGetListDuration(flightCollection, date);
+		Assert.assertTrue(!flightDateGetListDuration.isEmpty());
+		Assert.assertTrue(flightDateGetListDuration.size() == 4);
+	}
+	
+	@Test
+	public void flightDateGetSetDuration() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		Set<Duration> flightDateGetSetDuration = flightService
+				.flightDateGetSetDuration(flightCollection, date);
+		Assert.assertTrue(!flightDateGetSetDuration.isEmpty());
+		Assert.assertTrue(flightDateGetSetDuration.size() == 4);
+	}
+	
+	
+	@Test
+	public void flightDateGetMapDuration() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+	    Map<String, Duration> flightDateGenerateMapDestionationDuration = flightService
+				.flightDateGenerateMapDestionationDuration(flightCollection, date);
+		Assert.assertTrue(!flightDateGenerateMapDestionationDuration.isEmpty());
+		Assert.assertTrue(flightDateGenerateMapDestionationDuration.size() == 4);
+		
+		Duration duration = flightDateGenerateMapDestionationDuration.get("Madrid");
+		//foreach of a map example
+//		flightDateGenerateMapDestionationDuration.forEach((destination,durationNew)->
+//		System.out.println(destination));
+		Assert.assertTrue(duration.getMinutes() == 30);
+		Assert.assertTrue(duration.getHours() == 2);
+	}
+	
+	
 
 }

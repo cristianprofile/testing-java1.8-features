@@ -2,8 +2,11 @@ package com.cristian.mylab;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public interface FlightService {
@@ -52,6 +55,16 @@ public interface FlightService {
 			LocalDate date);
 
 	public void flightDateAddTenPercentAditionalPrice(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public List<Duration> flightDateGetListDuration(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public Set<Duration> flightDateGetSetDuration(Collection<Flight> flightCollection,
+			LocalDate date);
+
+
+	public Map<String, Duration> flightDateGenerateMapDestionationDuration(
 			Collection<Flight> flightCollection, LocalDate date);
 
 	

@@ -3,13 +3,17 @@ package com.cristian.mylab;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
@@ -188,10 +192,13 @@ public class FlightServiceImpl implements FlightService {
 		Stream<Flight> sortedFlights = flightCollection.stream().sorted(
 				byNumPassengers.thenComparing(byNumSeats));
 
-		//this sentence generates the same result of the previous sentence
-		flightCollection.stream().sorted(
-				Comparator.comparing(Flight::getNumPassengers).thenComparing(
-						Flight::getNumSeats)).forEach(flight->System.out.println(flight));;
+		// this sentence generates the same result of the previous sentence
+		flightCollection
+				.stream()
+				.sorted(Comparator.comparing(Flight::getNumPassengers)
+						.thenComparing(Flight::getNumSeats))
+				.forEach(flight -> System.out.println(flight));
+		;
 
 		return sortedFlights;
 	}
@@ -218,5 +225,36 @@ public class FlightServiceImpl implements FlightService {
 		flightCollection.stream().forEach(addTenPercentAditionalPrice());
 
 	}
+	
+	//*********TRANSFORM COLLECTIONS TO SET LIST OR NEW MAP 
 
+	@Override
+	public List<Duration> flightDateGetListDuration(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		return flightCollection.stream().filter(isDatetPredicate(date))
+				.map(Flight::getDuration).collect(Collectors.toList());
+
+	}
+
+	@Override
+	public Set<Duration> flightDateGetSetDuration(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		return flightCollection.stream().filter(isDatetPredicate(date))
+				.map(Flight::getDuration).collect(Collectors.toSet());
+
+	}
+
+	@Override
+	public Map<String, Duration> flightDateGenerateMapDestionationDuration(
+			Collection<Flight> flightCollection, LocalDate date) {
+
+		return flightCollection
+				.stream()
+				.filter(isDatetPredicate(date))
+				.collect(Collectors.toMap((Flight flight) -> flight.getDestination(), (
+						Flight flight) ->flight.getDuration()));
+
+	}
 }
