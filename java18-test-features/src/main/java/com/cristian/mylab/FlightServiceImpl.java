@@ -188,6 +188,11 @@ public class FlightServiceImpl implements FlightService {
 		Stream<Flight> sortedFlights = flightCollection.stream().sorted(
 				byNumPassengers.thenComparing(byNumSeats));
 
+		//this sentence generates the same result of the previous sentence
+		flightCollection.stream().sorted(
+				Comparator.comparing(Flight::getNumPassengers).thenComparing(
+						Flight::getNumSeats)).forEach(flight->System.out.println(flight));;
+
 		return sortedFlights;
 	}
 
