@@ -304,11 +304,21 @@ public class FlightServiceImplTest {
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
 		double flightDatePriceVariance = flightService
 				.flightDatePriceAverageOtherWay(flightCollection, date);
-		System.out.println(flightDatePriceVariance);
 		Assert.assertTrue(flightDatePriceVariance == 1050);
 
 	}
 		
+	
+	@Test
+	public void flightDatePriceAverageOtherWayEmptyCollection() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = new ArrayList<Flight>();
+		double flightDatePriceVariance = flightService
+				.flightDatePriceAverageOtherWay(flightCollection, date);
+		Assert.assertTrue(flightDatePriceVariance == 0);
+
+	}
 	
 	
 
