@@ -51,16 +51,12 @@ Testing java 1.8 new features with dates and lambda expression using collections
 			Collection<Flight> flightCollection, LocalDate date) 
 
 		return flightCollection.stream().filter(isDatetPredicate(date))
-				.map(Flight::getDuration).collect(Collectors.toList());
-
-	`
+				.map(Flight::getDuration).collect(Collectors.toList());`
  - `public Set<Duration> flightDateGetSetDuration(
 			Collection<Flight> flightCollection, LocalDate date) 
 
 		return flightCollection.stream().filter(isDatetPredicate(date))
-				.map(Flight::getDuration).collect(Collectors.toSet());
-
-	`
+				.map(Flight::getDuration).collect(Collectors.toSet());`
  - `public Map<String, Duration> flightDateGenerateMapDestionationDuration(
 			Collection<Flight> flightCollection, LocalDate date) 
 		return flightCollection
