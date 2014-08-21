@@ -45,6 +45,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `flightCollection.stream().filter(isDatetPredicate(date)).min(byNumPassengers.thenComparing(byNumSeats));`
  - `flightCollection.stream().sorted(byNumPassengers.thenComparing(byNumSeats));`
 -  Added Reduce a flight collection. Reduce operation create an "sum iterate operation for each element". We will calculate sum of all flights using Duration class
+[Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L337) and
+[Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L223)
  - `Duration reduceDuration = flightCollection.stream()
 				.map(flight -> flight.getDuration())
 				.reduce(new Duration(0, 0), (x, y) -> {
