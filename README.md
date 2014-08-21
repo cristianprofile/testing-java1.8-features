@@ -33,6 +33,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
 				.max(byNumPassengers.thenComparing(byNumSeats));```  
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
 -  Use mapToInt and Map to double to test sum and average calculation operation
+[Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L278) and
+[Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L170)
  -  `flightCollection.stream().filter(isDatetPredicate(date))
 				.mapToInt(getNumPassengers()).sum();`
  - `OptionalDouble average = flightCollection.stream()
