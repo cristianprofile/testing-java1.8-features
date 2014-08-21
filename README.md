@@ -47,6 +47,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
 - Added foreach consumer to be able to make change to elements of stream. Example method flightDateAddTenPercentAditionalPrice foreach stream iterate
  - `flightCollection.stream().forEach(addTenPercentAditionalPrice());`
 - Added use collect method to transform our collect to set list or map collection
+ [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L375) and
+ [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L240)
  - `List<Duration> flightDateGetListDuration= flightCollection.stream().filter(isDatetPredicate(date)).map(Flight::getDuration).collect(Collectors.toList());`
  - `Set<Duration> flightDateGetSetDuration=flightCollection.stream().filter(isDatetPredicate(date)).map(Flight::getDuration).collect(Collectors.toSet());`
  - `Map<String, Duration> flightDateGenerateMapDestionationDuration= flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.toMap((Flight flight) -> flight.getDestination(),(Flight flight) ->flight.getDuration()));`
