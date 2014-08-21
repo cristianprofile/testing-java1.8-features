@@ -45,6 +45,9 @@ Testing java 1.8 new features with dates and lambda expression using collections
 		return reduceDuration;` 
 
 - Added foreach consumer to be able to make change to elements of stream. Example method flightDateAddTenPercentAditionalPrice foreach stream iterate
+ [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L348) and
+ [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L234)
+
  - `flightCollection.stream().forEach(addTenPercentAditionalPrice());`
 - Added use collect method to transform our collect to set list or map collection
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L375) and
