@@ -301,4 +301,30 @@ public class FlightServiceImpl implements FlightService {
 				.collect(Collectors.groupingBy(flight->flight.getNumSeats(),Collectors.toSet()));
 
 	}
+	
+	
+	
+	@Override
+	public Map<String, Double> flightDateGroupByDestinationAveragePrice(
+			Collection<Flight> flightCollection, LocalDate date) {
+		return flightCollection
+				.stream()
+				.filter(isDatetPredicate(date))
+				.collect(Collectors.groupingBy(flight->flight.getDestination(),
+						Collectors.averagingDouble((Flight flight)->flight.getPrice())));
+
+	}
+	
+	
+	@Override
+	public Map<LocalDate, Double> flightGroupByDateSumPrice(
+			Collection<Flight> flightCollection, LocalDate date) {
+		return flightCollection
+				.stream()
+				.collect(Collectors.groupingBy((Flight flight)->flight.getDate(),
+						Collectors.summingDouble((Flight flight)->flight.getPrice())));
+
+	}
+	
+	
 }

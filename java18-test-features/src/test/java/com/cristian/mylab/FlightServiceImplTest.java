@@ -447,6 +447,41 @@ public class FlightServiceImplTest {
 	}
 
 	
+	
+	
+	@Test
+	public void flightDateGroupByDestinationAveragePrice() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		//low cost is a flight cost less or equal 800 euros
+	    Map<String, Double> flightGroupByDateSumPrice = flightService
+				.flightDateGroupByDestinationAveragePrice(flightCollection, date);
+		Assert.assertTrue(!flightGroupByDateSumPrice.isEmpty());
+		Assert.assertTrue(flightGroupByDateSumPrice.size() == 4);
+		Assert.assertTrue(flightGroupByDateSumPrice.containsKey("Madrid"));	
+		Assert.assertTrue(flightGroupByDateSumPrice.get("Madrid") == 800);
+		
+	}
+	
+	
+	@Test
+	public void flightGroupByDateSumPrice() {
+
+		LocalDate date = LocalDate.of(2014, 5, 15);
+		Collection<Flight> flightCollection = getFlightCollection(date, false);
+		//low cost is a flight cost less or equal 800 euros
+	    Map<LocalDate, Double> flightGroupByDateSumPrice = flightService
+				.flightGroupByDateSumPrice(flightCollection, date);
+		Assert.assertTrue(!flightGroupByDateSumPrice.isEmpty());
+		Assert.assertTrue(flightGroupByDateSumPrice.size() == 1);
+		Assert.assertTrue(flightGroupByDateSumPrice.containsKey(date));
+		
+		Assert.assertTrue(flightGroupByDateSumPrice.get(date) == 4200);
+		
+	}
+	
+	
 
 	
 	

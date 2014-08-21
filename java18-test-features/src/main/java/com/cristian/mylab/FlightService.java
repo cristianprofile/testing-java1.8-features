@@ -79,6 +79,12 @@ public interface FlightService {
 	public Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet(
 			Collection<Flight> flightCollection, LocalDate date);
 
+	public  Map<String, Double> flightDateGroupByDestinationAveragePrice(
+			Collection<Flight> flightCollection, LocalDate date);
+
+	public Map<LocalDate, Double> flightGroupByDateSumPrice(
+			Collection<Flight> flightCollection, LocalDate date);
+
 	
 
 
