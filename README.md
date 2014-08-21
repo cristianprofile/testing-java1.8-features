@@ -19,11 +19,15 @@ Testing java 1.8 new features with dates and lambda expression using collections
 	`
 	
 -  Use any and all operator to streams (boolean operation)
+ [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L147) and
+ [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L90)
  -  ```flightCollection.stream().anyMatch(
 				fullFlightPredicate().and(isDatetPredicate(date)));
 		flightCollection.stream().allMatch(
 				fullFlightPredicate().and(isDatetPredicate(date))); ``` 
 -  Use max and min comparator with stream and testing  new optional object, null pointer has death
+[Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L177) and
+[Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L110)
  -  ```Optional<Flight> max = flightCollection.stream()
 				.filter(isDatetPredicate(date))
 				.max(byNumPassengers.thenComparing(byNumSeats));```  
