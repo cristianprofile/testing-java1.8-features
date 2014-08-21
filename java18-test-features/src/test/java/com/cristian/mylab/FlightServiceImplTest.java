@@ -482,7 +482,6 @@ public class FlightServiceImplTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void testOptionalNewJavaClass() {
-
 		Optional<String> optional = Optional.of("bam");
 		Assert.assertTrue(optional.isPresent());
 		optional = Optional.empty();
