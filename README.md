@@ -60,12 +60,12 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);`
    `Assert.assertTrue(flightDatePriceAverage.isPresent());`
  - `@Test(expected = IllegalStateException.class)`
-	`public void testOptionalNewJavaClass()`
-	`	Optional<String> optional = Optional.of("bam");`
-	`	Assert.assertTrue(optional.isPresent());`
-	`	optional=Optional.empty();`
-	`	Assert.assertFalse(optional.isPresent());`
-	`	optional.ifPresent(x->System.out.println(x));`
-	`	String orElse = optional.orElse("pepe");`
-	`	Assert.assertTrue(orElse.equals("pepe"));`
-	`	optional.orElseThrow(IllegalStateException::new);`
+   `public void testOptionalNewJavaClass()`
+   `Optional<String> optional = Optional.of("bam");`
+   `Assert.assertTrue(optional.isPresent());`
+   `optional=Optional.empty();`
+   `Assert.assertFalse(optional.isPresent());`
+   `optional.ifPresent(x->System.out.println(x));`
+   `String orElse = optional.orElse("pepe");`
+   `Assert.assertTrue(orElse.equals("pepe"));`
+   `optional.orElseThrow(IllegalStateException::new);`
