@@ -57,8 +57,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `Map<String, Double> flightDateGroupByDestinationAveragePrice=flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getDestination(),Collectors.averagingDouble((Flight flight)->flight.getPrice())));`
  - `Map<LocalDate, Double> flightGroupByDateSumPrice= flightCollection.stream().collect(Collectors.groupingBy((Flight flight)->flight.getDate(),Collectors.summingDouble((Flight flight)->flight.getPrice())));`
 - Testing new Optional object class on java 1.8
- - `OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);`
-   `Assert.assertTrue(flightDatePriceAverage.isPresent());`
+ - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
+   Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
  - `@Test(expected = IllegalStateException.class)                                                        `
    `public void testOptionalNewJavaClass()                                                               `
    `Optional<String> optional = Optional.of("bam");`
