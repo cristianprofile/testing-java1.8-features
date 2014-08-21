@@ -47,20 +47,6 @@ Testing java 1.8 new features with dates and lambda expression using collections
 - Added foreach consumer to be able to make change to elements of stream. Example method flightDateAddTenPercentAditionalPrice foreach stream iterate
  - `flightCollection.stream().forEach(addTenPercentAditionalPrice());`
 - Added use collect method to transform our collect to set list or map collection
- - `public List<Duration> flightDateGetListDuration(
-			Collection<Flight> flightCollection, LocalDate date) 
-
-		return flightCollection.stream().filter(isDatetPredicate(date))
-				.map(Flight::getDuration).collect(Collectors.toList());`
- - `public Set<Duration> flightDateGetSetDuration(
-			Collection<Flight> flightCollection, LocalDate date) 
-
-		return flightCollection.stream().filter(isDatetPredicate(date))
-				.map(Flight::getDuration).collect(Collectors.toSet());`
- - `public Map<String, Duration> flightDateGenerateMapDestionationDuration(
-			Collection<Flight> flightCollection, LocalDate date) 
-		return flightCollection
-				.stream()
-				.filter(isDatetPredicate(date))
-				.collect(Collectors.toMap((Flight flight) -> flight.getDestination(), (
-						Flight flight) ->flight.getDuration()));`
+ - `flightCollection.stream().filter(isDatetPredicate(date)).map(Flight::getDuration).collect(Collectors.toList());`
+ - `flightCollection.stream().filter(isDatetPredicate(date)).map(Flight::getDuration).collect(Collectors.toSet());`
+ - `flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.toMap((Flight flight) -> flight.getDestination(),(Flight flight) ->flight.getDuration()));`
