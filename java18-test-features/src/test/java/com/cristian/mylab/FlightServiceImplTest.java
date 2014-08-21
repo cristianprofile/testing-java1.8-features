@@ -296,7 +296,7 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(flightDatePriceAverage.getAsDouble() == 1050);
 
 	}
-	
+
 	@Test
 	public void flightDatePriceAverageOtherWay() {
 
@@ -307,8 +307,7 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(flightDatePriceVariance == 1050);
 
 	}
-		
-	
+
 	@Test
 	public void flightDatePriceAverageOtherWayEmptyCollection() {
 
@@ -319,8 +318,6 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(flightDatePriceVariance == 0);
 
 	}
-	
-	
 
 	@Test
 	public void flightDateOrderByNumSeatsAndPassengers() {
@@ -351,37 +348,34 @@ public class FlightServiceImplTest {
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		flightService.flightDateAddTenPercentAditionalPrice(flightCollection,
 				date);
-	
+
 		flightCollection.forEach(flight -> {
 			if (flight.getDestination().equals("Japan")) {
 
 				Assert.assertTrue(flight.getPrice() == 2200);
-			}
-			else
-			{
+			} else {
 				if (flight.getDestination().equals("Madrid")) {
 
 					Assert.assertTrue(flight.getPrice() == 880);
 				}
-				
+
 			}
 
 		});
 
 	}
-	
-	
+
 	@Test
 	public void flightDateGetListDuration() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-		 List<Duration> flightDateGetListDuration = flightService
+		List<Duration> flightDateGetListDuration = flightService
 				.flightDateGetListDuration(flightCollection, date);
 		Assert.assertTrue(!flightDateGetListDuration.isEmpty());
 		Assert.assertTrue(flightDateGetListDuration.size() == 4);
 	}
-	
+
 	@Test
 	public void flightDateGetSetDuration() {
 
@@ -392,115 +386,111 @@ public class FlightServiceImplTest {
 		Assert.assertTrue(!flightDateGetSetDuration.isEmpty());
 		Assert.assertTrue(flightDateGetSetDuration.size() == 4);
 	}
-	
-	
+
 	@Test
 	public void flightDateGetMapDuration() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-	    Map<String, Duration> flightDateGenerateMapDestionationDuration = flightService
-				.flightDateGenerateMapDestionationDuration(flightCollection, date);
+		Map<String, Duration> flightDateGenerateMapDestionationDuration = flightService
+				.flightDateGenerateMapDestionationDuration(flightCollection,
+						date);
 		Assert.assertTrue(!flightDateGenerateMapDestionationDuration.isEmpty());
 		Assert.assertTrue(flightDateGenerateMapDestionationDuration.size() == 4);
-		
-		Duration duration = flightDateGenerateMapDestionationDuration.get("Madrid");
-		//foreach of a map example
-//		flightDateGenerateMapDestionationDuration.forEach((destination,durationNew)->
-//		System.out.println(destination));
+
+		Duration duration = flightDateGenerateMapDestionationDuration
+				.get("Madrid");
+		// foreach of a map example
+		// flightDateGenerateMapDestionationDuration.forEach((destination,durationNew)->
+		// System.out.println(destination));
 		Assert.assertTrue(duration.getMinutes() == 30);
 		Assert.assertTrue(duration.getHours() == 2);
 	}
-	
-	
+
 	@Test
 	public void flightDateGenerateMapPriceLowCost() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-		//low cost is a flight cost less or equal 800 euros
-	    Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost = flightService
+		// low cost is a flight cost less or equal 800 euros
+		Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost = flightService
 				.flightDateGenerateMapPriceLowCost(flightCollection, date);
 		Assert.assertTrue(!flightDateGenerateMapPriceLowCost.isEmpty());
 		Assert.assertTrue(flightDateGenerateMapPriceLowCost.size() == 2);
-		//assert to test low cost flight and premium flight are correct in the map
-		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream().anyMatch(flight->flight.getDestination().equals("Madrid")));
-		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream().anyMatch(flight->flight.getDestination().equals("Paris")));
-		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(false).stream().filter(flight->flight.getDestination().equals("Japan")|| flight.getDestination().equals("London")).count()==2);
+		// assert to test low cost flight and premium flight are correct in the
+		// map
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream()
+				.anyMatch(flight -> flight.getDestination().equals("Madrid")));
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost.get(true).stream()
+				.anyMatch(flight -> flight.getDestination().equals("Paris")));
+		Assert.assertTrue(flightDateGenerateMapPriceLowCost
+				.get(false)
+				.stream()
+				.filter(flight -> flight.getDestination().equals("Japan")
+						|| flight.getDestination().equals("London")).count() == 2);
 	}
-	
+
 	@Test
 	public void flightDateGenerateMapGroupByNumSeats() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-		//low cost is a flight cost less or equal 800 euros
-	    Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats = flightService
+		// low cost is a flight cost less or equal 800 euros
+		Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats = flightService
 				.flightDateGenerateMapGroupByNumSeats(flightCollection, date);
 		Assert.assertTrue(!flightDateGenerateMapGroupByNumSeats.isEmpty());
 		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.size() == 2);
-		//assert to test flight of 200 seats are 3 and 255 seats there is only one object in the list
-		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(200).size()==3);
-		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(255).size()==1);
-		//assert to test flight of 200 seats are 3 and 255 seats there is only one object in the list
-		Assert.assertFalse(flightDateGenerateMapGroupByNumSeats.containsKey(344));
+		// assert to test flight of 200 seats are 3 and 255 seats there is only
+		// one object in the list
+		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(200).size() == 3);
+		Assert.assertTrue(flightDateGenerateMapGroupByNumSeats.get(255).size() == 1);
+		// assert to test flight of 200 seats are 3 and 255 seats there is only
+		// one object in the list
+		Assert.assertFalse(flightDateGenerateMapGroupByNumSeats
+				.containsKey(344));
 	}
 
-	
-	
-	
 	@Test
 	public void flightDateGroupByDestinationAveragePrice() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-		//low cost is a flight cost less or equal 800 euros
-	    Map<String, Double> flightGroupByDateSumPrice = flightService
-				.flightDateGroupByDestinationAveragePrice(flightCollection, date);
+		// low cost is a flight cost less or equal 800 euros
+		Map<String, Double> flightGroupByDateSumPrice = flightService
+				.flightDateGroupByDestinationAveragePrice(flightCollection,
+						date);
 		Assert.assertTrue(!flightGroupByDateSumPrice.isEmpty());
 		Assert.assertTrue(flightGroupByDateSumPrice.size() == 4);
-		Assert.assertTrue(flightGroupByDateSumPrice.containsKey("Madrid"));	
+		Assert.assertTrue(flightGroupByDateSumPrice.containsKey("Madrid"));
 		Assert.assertTrue(flightGroupByDateSumPrice.get("Madrid") == 800);
-		
+
 	}
-	
-	
+
 	@Test
 	public void flightGroupByDateSumPrice() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, false);
-		//low cost is a flight cost less or equal 800 euros
-	    Map<LocalDate, Double> flightGroupByDateSumPrice = flightService
+		// low cost is a flight cost less or equal 800 euros
+		Map<LocalDate, Double> flightGroupByDateSumPrice = flightService
 				.flightGroupByDateSumPrice(flightCollection, date);
 		Assert.assertTrue(!flightGroupByDateSumPrice.isEmpty());
 		Assert.assertTrue(flightGroupByDateSumPrice.size() == 1);
 		Assert.assertTrue(flightGroupByDateSumPrice.containsKey(date));
-		
-		
+
 	}
-	
-	
+
 	@Test(expected = IllegalStateException.class)
 	public void testOptionalNewJavaClass() {
 
 		Optional<String> optional = Optional.of("bam");
 		Assert.assertTrue(optional.isPresent());
-		optional=Optional.empty();
+		optional = Optional.empty();
 		Assert.assertFalse(optional.isPresent());
-		optional.ifPresent(x->System.out.println(x));
+		optional.ifPresent(x -> System.out.println(x));
 		String orElse = optional.orElse("pepe");
 		Assert.assertTrue(orElse.equals("pepe"));
 		optional.orElseThrow(IllegalStateException::new);
 	}
-	
-	
-	
-	
-	
-	
-
-	
-	
 
 }
