@@ -51,6 +51,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `Set<Duration> flightDateGetSetDuration=flightCollection.stream().filter(isDatetPredicate(date)).map(Flight::getDuration).collect(Collectors.toSet());`
  - `Map<String, Duration> flightDateGenerateMapDestionationDuration= flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.toMap((Flight flight) -> flight.getDestination(),(Flight flight) ->flight.getDuration()));`
 - Added use collect method to use groupBy sum and average operation and partition operation Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L417)
+java 1.8 [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L275)
  - `Map<Boolean, List<Flight>> flightDateGenerateMapPriceLowCost= flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.partitioningBy(flight->flight.getPrice()<=800));`
  - `Map<Integer, List<Flight>> flightDateGenerateMapGroupByNumSeats= flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getNumSeats()));`
  - `Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet = flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getNumSeats(),Collectors.toSet()))`
