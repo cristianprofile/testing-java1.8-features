@@ -59,7 +59,8 @@ Testing java 1.8 new features with dates and lambda expression using collections
 - Testing new Optional object class on java 1.8
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
    Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
- - <tt>@Test(expected = IllegalStateException.class)
+ -  [a relative link](blob/master/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java)
+    <tt>@Test(expected = IllegalStateException.class)
     public void testOptionalNewJavaClass()
     Optional<String> optional = Optional.of("bam");
     Assert.assertTrue(optional.isPresent());
