@@ -74,7 +74,7 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet = flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getNumSeats(),Collectors.toSet()))`
  - `Map<String, Double> flightDateGroupByDestinationAveragePrice=flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getDestination(),Collectors.averagingDouble((Flight flight)->flight.getPrice())));`
  - `Map<LocalDate, Double> flightGroupByDateSumPrice= flightCollection.stream().collect(Collectors.groupingBy((Flight flight)->flight.getDate(),Collectors.summingDouble((Flight flight)->flight.getPrice())));`
-- Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L470)
+- Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L485)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
    Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
 
