@@ -1,6 +1,8 @@
 package com.cristian.mylab;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
@@ -34,7 +36,7 @@ public class NewFeaturesTest {
 	
 	
 	@Test
-	public void testNewDateApi() {
+	public void testNewDateApiLocalTime() {
 		LocalTime localTime1 = LocalTime.of(12, 59, 59);
 		LocalTime localTime2 = LocalTime.of(23, 59, 59);
 
@@ -61,6 +63,23 @@ public class NewFeaturesTest {
 		Assert.assertTrue(minus.getMinute()==50);
 		
 		//period versus duration
+		
+		
+	}
+	
+	@Test
+	public void testNewDateApiLocalDate() {
+		
+		//period versus duration
+		
+		
+		LocalDate xmas = LocalDate.of(2018, 12, 11);
+		DayOfWeek dayOfWeek = xmas.getDayOfWeek();
+		int dayOfMonth = xmas.getDayOfMonth();
+		System.out.println(xmas.getDayOfYear());
+		Assert.assertTrue(dayOfWeek.equals(DayOfWeek.TUESDAY));
+		Assert.assertTrue(dayOfMonth==11);
+		Assert.assertTrue(xmas.getDayOfYear()==345);
 		
 	}
 
