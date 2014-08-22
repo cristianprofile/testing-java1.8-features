@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
@@ -76,10 +77,11 @@ public class NewFeaturesTest {
 		LocalDate xmas = LocalDate.of(2018, 12, 11);
 		DayOfWeek dayOfWeek = xmas.getDayOfWeek();
 		int dayOfMonth = xmas.getDayOfMonth();
-		System.out.println(xmas.getDayOfYear());
 		Assert.assertTrue(dayOfWeek.equals(DayOfWeek.TUESDAY));
 		Assert.assertTrue(dayOfMonth==11);
 		Assert.assertTrue(xmas.getDayOfYear()==345);
+		Month month = xmas.getMonth();
+		Assert.assertTrue(month.equals(Month.DECEMBER));
 		
 	}
 
