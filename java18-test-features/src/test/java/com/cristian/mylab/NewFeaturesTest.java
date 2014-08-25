@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
@@ -84,12 +85,19 @@ public class NewFeaturesTest {
 		Assert.assertTrue(leetTime.getMinute() == 37);
 		Assert.assertTrue(leetTime.getSecond() == 0);
 		// period (for date) versus duration (for time)
+		
+		//other constructor for time easy to use
+		LocalTime parse = LocalTime.parse("10:15:30");
+	
+		Duration oneDay = Duration.between(parse, leetTime);
+		Assert.assertTrue(oneDay.toHours() ==3);
+		Assert.assertTrue(oneDay.toMinutes() ==201);
 
 	}
 
 	@Test
 	public void testNewDateApiLocalDate() {
-
+		
 		// created a localdate 2018-12-11 (yyyy mm dd)
 
 		LocalDate localDate = LocalDate.of(2018, 12, 11);
@@ -112,6 +120,10 @@ public class NewFeaturesTest {
 
 		Assert.assertTrue(xmas.getMonth().equals(Month.DECEMBER));
 		Assert.assertTrue(xmas.getYear() == 2014);
+		
+		Period betweenPeriod = Period.between(xmas, localDate);
+		Assert.assertTrue(betweenPeriod.getYears() == 3);
+		
 
 	}
 
@@ -144,6 +156,11 @@ public class NewFeaturesTest {
 		Assert.assertTrue(parseLocalDateTime.getHour() == 7);
 		Assert.assertTrue(parseLocalDateTime.getMinute() == 13);
 		Assert.assertTrue(parseLocalDateTime.getSecond() == 0);
+		
+		//duration need time so need seconds and minutes and hours
+		Duration duration = Duration.between(parseLocalDateTime, localDateTime);
+		Assert.assertTrue(duration.toDays() == 58);
+		
 
 	}
 
