@@ -5,9 +5,10 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAmount;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -69,6 +70,19 @@ public class NewFeaturesTest {
 		LocalTime minus = newTimeMinusSecond.minus(minusMinutes);
 		Assert.assertTrue(minus.getMinute() == 50);
 
+		//create a datetime with uk formatter
+		
+		DateTimeFormatter ukFormatter =
+			    DateTimeFormatter
+			        .ofLocalizedTime(FormatStyle.SHORT)
+			        .withLocale(Locale.UK);
+
+		LocalTime leetTime = LocalTime.parse("13:37", ukFormatter);
+		
+		
+		Assert.assertTrue(leetTime.getHour() == 13);
+		Assert.assertTrue(leetTime.getMinute() == 37);
+		Assert.assertTrue(leetTime.getSecond() == 0);
 		// period (for date) versus duration (for time)
 
 	}
