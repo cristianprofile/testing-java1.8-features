@@ -77,5 +77,5 @@ Testing java 1.8 new features with dates and lambda expression using collections
 - Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L25)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
    Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
-- Testing new localDate LocalTime and LocalDatetime in java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L77)
+- Testing new localDate LocalTime and LocalDatetime in java 1.8 [Test Dates Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L77)
 
