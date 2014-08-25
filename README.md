@@ -1,7 +1,7 @@
 Testing java 1.8 : I Love functional programming
 ========================
 
-Testing java 1.8 new features with dates and lambda expression using collections streams.
+Testing java 1.8 new features with lambda expression using collections streams.
 
 -  Filter a collection with lambda expression using boolean predicate
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L90) and
@@ -74,6 +74,10 @@ Testing java 1.8 new features with dates and lambda expression using collections
  - `Map<Integer, Set<Flight>> flightDateGenerateGroupByNumSeatsSet = flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getNumSeats(),Collectors.toSet()))`
  - `Map<String, Double> flightDateGroupByDestinationAveragePrice=flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getDestination(),Collectors.averagingDouble((Flight flight)->flight.getPrice())));`
  - `Map<LocalDate, Double> flightGroupByDateSumPrice= flightCollection.stream().collect(Collectors.groupingBy((Flight flight)->flight.getDate(),Collectors.summingDouble((Flight flight)->flight.getPrice())));`
+
+
+Testing java 1.8 new features with dates and optional objects
+
 - Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L24)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
    Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
