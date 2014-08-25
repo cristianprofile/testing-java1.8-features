@@ -22,11 +22,17 @@ public class NewFeaturesTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void testOptionalNewJavaClass() {
+		//create an optional object
 		Optional<String> optional = Optional.of("bam");
 		Assert.assertTrue(optional.isPresent());
+		
+		//setting empty value to optional object
 		optional = Optional.empty();
 		Assert.assertFalse(optional.isPresent());
+		//this line do not write to console output
 		optional.ifPresent(x -> System.out.println(x));
+		
+		//testing orelse method to set a value if optional object is empty
 		String orElse = optional.orElse("pepe");
 		Assert.assertTrue(orElse.equals("pepe"));
 		optional.orElseThrow(IllegalStateException::new);
