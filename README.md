@@ -84,10 +84,11 @@ Optional is a new object class that will prevent in our code to throw null point
 - Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L24)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
    Assert.assertTrue(flightDatePriceAverage.isPresent());</tt>
-- Testing new localDate LocalTime and LocalDatetime in java 1.8 [Test Dates Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L42)
  - `Optional<String> optional = Optional.of("bam");
 		Assert.assertTrue(optional.isPresent());
 		//setting empty value to optional object
 		optional = Optional.empty();
 		Assert.assertFalse(optional.isPresent()); `
+- Testing new localDate LocalTime and LocalDatetime in java 1.8 [Test Dates Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L42)
+
 
