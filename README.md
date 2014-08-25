@@ -1,7 +1,7 @@
-Testing java 1.8 : I Love functional programming
+Testing java 1.8 : I Love functional programming. Test lambda expression using collections streams.
 ========================
 
-Testing java 1.8 new features with lambda expression using collections streams.
+Lambda is the most powerfull feature added to java language. Now functions are object so you can send a function param to a method. This was very commont in other programming languages, and now it is available with a lot changues in apis like collections. Let me show you how easy it is to use this pretty new feature.
 
 -  Filter a collection with lambda expression using boolean predicate
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L90) and
@@ -75,8 +75,11 @@ Testing java 1.8 new features with lambda expression using collections streams.
  - `Map<String, Double> flightDateGroupByDestinationAveragePrice=flightCollection.stream().filter(isDatetPredicate(date)).collect(Collectors.groupingBy(flight->flight.getDestination(),Collectors.averagingDouble((Flight flight)->flight.getPrice())));`
  - `Map<LocalDate, Double> flightGroupByDateSumPrice= flightCollection.stream().collect(Collectors.groupingBy((Flight flight)->flight.getDate(),Collectors.summingDouble((Flight flight)->flight.getPrice())));`
 
+Testing java 1.8 : Dates and optional object
+========================
 
-Testing java 1.8 new features with dates and optional objects
+Dates are new in java 1.8, simmilar to jodatime. A powerfull feature that will  let us to forget headache with old calendar´s api.
+Optional is a new object class that will prevent in our code to throw null pointers exception. Let me show you how easy is to use this new 2 features.
 
 - Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L24)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
