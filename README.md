@@ -79,7 +79,7 @@ Testing java 1.8 : "Dates and optional object"
 ========================
 
 Dates are new in java 1.8, simmilar to jodatime. A powerfull feature that will  let us to forget headache with old calendar´s api.
-Optional is a new object class that will prevent in our code to throw null pointers exception. Let me show you how easy is to use this new 2 features.
+Optional is a new object class that will prevent in our code to throw null pointers exception. Let me show you how easy is to use this new 2 features. (more info at  [Optional objetc in java 1.8](http://ticodificando.com/2013/04/24/jdk-opcional-objs/))
 
 - Testing new Optional object class on java 1.8 [Test Optional Example method](/java18-test-features/src/test/java/com/cristian/mylab/NewFeaturesTest.java#L24)
  - <tt>OptionalDouble flightDatePriceAverage = flightService.flightDatePriceAverage(flightCollection, date);
