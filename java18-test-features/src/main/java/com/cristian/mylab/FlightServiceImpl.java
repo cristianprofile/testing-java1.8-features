@@ -34,6 +34,7 @@ public class FlightServiceImpl implements FlightService {
 				+ (flight.getPrice() * 0.1));
 	}
 
+	
 	Comparator<Flight> byNumPassengers = (f1, f2) -> f1.getNumPassengers()
 			.compareTo(f2.getNumPassengers());
 
@@ -199,11 +200,11 @@ public class FlightServiceImpl implements FlightService {
 	
 
 	@Override
-	public List<Flight> flightDateOrderByNumPassengersAndNumSeats(
+	public List<Flight> flightDateOrderByNumPassengersAndNumSeatsDesc (
 			Collection<Flight> flightCollection, LocalDate date) {
 
 		 List<Flight> collect = flightCollection.stream().sorted(
-				byNumPassengers.thenComparing(byNumSeats)).collect(Collectors.toList());
+				byNumPassengers.reversed().thenComparing(byNumSeats.reversed())).collect(Collectors.toList());
 
 		// this sentence generates the same result of the previous sentence
 //		flightCollection

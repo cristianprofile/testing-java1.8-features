@@ -320,15 +320,15 @@ public class FlightServiceImplTest {
 	}
 
 	@Test
-	public void flightDateOrderByNumSeatsAndPassengers() {
+	public void flightDateOrderByNumSeatsAndPassengersDesc() {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
 		 List<Flight> flightDateOrderByNumSeatsAndNumPassengers = flightService
-				.flightDateOrderByNumPassengersAndNumSeats(flightCollection,
+				.flightDateOrderByNumPassengersAndNumSeatsDesc(flightCollection,
 						date);
-		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(0).getDestination().equals("Japan"));
-		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(1).getDestination().equals("London"));
+		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(0).getDestination().equals("Paris"));
+		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(1).getDestination().equals("Madrid"));
 
 	}
 
