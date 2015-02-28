@@ -324,9 +324,11 @@ public class FlightServiceImplTest {
 
 		LocalDate date = LocalDate.of(2014, 5, 15);
 		Collection<Flight> flightCollection = getFlightCollection(date, true);
-		Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers = flightService
-				.flightDateOrderByNumSeatsAndNumPassengers(flightCollection,
+		 List<Flight> flightDateOrderByNumSeatsAndNumPassengers = flightService
+				.flightDateOrderByNumPassengersAndNumSeats(flightCollection,
 						date);
+		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(0).getDestination().equals("Japan"));
+		 Assert.assertTrue(flightDateOrderByNumSeatsAndNumPassengers.get(1).getDestination().equals("London"));
 
 	}
 

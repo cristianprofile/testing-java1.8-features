@@ -199,19 +199,19 @@ public class FlightServiceImpl implements FlightService {
 	
 
 	@Override
-	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
+	public List<Flight> flightDateOrderByNumPassengersAndNumSeats(
 			Collection<Flight> flightCollection, LocalDate date) {
 
-		Stream<Flight> sortedFlights = flightCollection.stream().sorted(
-				byNumPassengers.thenComparing(byNumSeats));
+		 List<Flight> collect = flightCollection.stream().sorted(
+				byNumPassengers.thenComparing(byNumSeats)).collect(Collectors.toList());
 
 		// this sentence generates the same result of the previous sentence
-		flightCollection
-				.stream()
-				.sorted(Comparator.comparing(Flight::getNumPassengers)
-						.thenComparing(Flight::getNumSeats))
-				.forEach(flight -> System.out.println(flight));
-		return sortedFlights;
+//		flightCollection
+//				.stream()
+//				.sorted(Comparator.comparing(Flight::getNumPassengers)
+//						.thenComparing(Flight::getNumSeats))
+//				.forEach(flight -> System.out.println(flight));
+		return collect;
 	}
 
 	/**

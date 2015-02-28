@@ -51,7 +51,7 @@ public interface FlightService {
 	public double flightDatePriceAverageOtherWay(Collection<Flight> flightCollection,
 			LocalDate date);
 
-	public Stream<Flight> flightDateOrderByNumSeatsAndNumPassengers(
+	public List<Flight> flightDateOrderByNumPassengersAndNumSeats(
 			Collection<Flight> flightCollection, LocalDate date);
 
 	public Duration flightDateReduceByDuration(Collection<Flight> flightCollection,
