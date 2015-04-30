@@ -37,12 +37,11 @@ public class FuncionalInterfaceTest {
 	
 	@Test
 	public void contextLoads() {
-		
 	    // if we have a functional interface with only  exactly one abstract method 
-		// java 1.8 allows to  match or lambda expresion to this abstract method. Is java 1.8 magic!!!!
-		FuncionalInterface x=(a,b)->a+b;
-		double sum = x.sum(2, 2);
-		Assert.assertTrue(4==sum);
+            // java 1.8 allows to  match or lambda expresion to this abstract method. Is java 1.8 magic!!!!
+	    FuncionalInterface x=(a,b)->a+b;
+	    double sum = x.sum(2, 2);
+	    Assert.assertTrue(4==sum);
 	    sum = x.printSum(4, 4);
 	    Assert.assertTrue(8==sum); 
 		
