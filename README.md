@@ -111,6 +111,6 @@ Example:
     Integer converted = converter.convert("123");
     System.out.println(converted);    // 123
 
-- Testing new @FunctionalInterface in java 1.8 and default methods [Test @FunctionalInterface](/java18-test-features/src/test/java/com/cristian/mylab/FuncionalInterfacet.java#L4)
+- Testing new @FunctionalInterface in java 1.8 and default methods [Test @FunctionalInterface](/java18-test-features/src/test/java/com/cristian/mylab/FuncionalInterface.java#L4)
 
 
