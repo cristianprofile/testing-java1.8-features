@@ -167,7 +167,8 @@ public class NewFeaturesTest {
 
 	}
 	
-	
+	// Optional java page with multiples examples
+	// http://www.oracle.com/technetwork/articles/java/java8-optional-2175753.html
 	
 	@Test
 	public void testOptionalMultiLevel() {
@@ -192,7 +193,23 @@ public class NewFeaturesTest {
 		
 		assertThat(name, equalToIgnoringCase("Pepe"));
 		
-//		name = fatherOpt.flatMap(Father::getFather).map(Father::getName).orElseGet(() -> getDefault());
+		
+    	name = fatherOpt.flatMap(Father::getFather).map(Father::getName).orElseGet(() -> "not found");
+    	
+    	// prints "Angel"
+    	assertThat(name, equalToIgnoringCase("Angel"));
+    	
+    	// If parent !=null
+    	// father=getfather();
+    	// if father.getname!=null and father.equalsignoracase("pepe")
+        //    result=name
+    	// else
+   	    //	  result="not found"
+    	// flatmap to return optional if value is returned is and optional
+    	
+          name = fatherOpt.flatMap(Father::getFather).filter(father->father.getName().equalsIgnoreCase("pepe")).map(father->father.getName()).orElseGet(() -> "not found");
+		
+          assertThat(name, equalToIgnoringCase("not found"));
 		
 	}
 	
