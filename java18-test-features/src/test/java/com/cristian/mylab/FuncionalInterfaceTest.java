@@ -1,5 +1,7 @@
 package com.cristian.mylab;
 
+import java.util.function.ToIntBiFunction;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = "classpath*:/META-INF/spring/applicationContext-service-test.xml")
 public class FuncionalInterfaceTest {
 
-	
+
 	
 	
 //	double sum(int a,int b);
@@ -40,6 +42,7 @@ public class FuncionalInterfaceTest {
 	    // if we have a functional interface with only  exactly one abstract method 
             // java 1.8 allows to  match or lambda expresion to this abstract method. Is java 1.8 magic!!!!
 	    FuncionalInterface x=(a,b)->a+b;
+	    
 	    double sum = x.sum(2, 2);
 	    Assert.assertTrue(4==sum);
 	    sum = x.printSum(4, 4);
@@ -54,6 +57,10 @@ public class FuncionalInterfaceTest {
 	    
 	    Assert.assertTrue(5==sum); 
 		
+	    
+	    
+	   
+	    
 	}
 
 }

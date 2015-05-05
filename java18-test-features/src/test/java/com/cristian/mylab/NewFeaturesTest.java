@@ -1,5 +1,9 @@
 package com.cristian.mylab;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
+
+
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -162,5 +166,38 @@ public class NewFeaturesTest {
 		
 
 	}
+	
+	
+	
+	@Test
+	public void testOptionalMultiLevel() {
+		Father angel = new Father(Optional.empty(), "Angel");
+		Optional<Father> fatherOpt = Optional.of(new Father(Optional.of(angel), "Pepe"));
+	
+		// trying to get the name of 4 level generations on a family 
+		String name = fatherOpt.flatMap(Father::getFather).flatMap(Father::getFather).flatMap(Father::getFather)
+		              .flatMap(Father::getFather).map(Father::getName).orElse("not found");	
+		
+		assertThat(name, equalToIgnoringCase("not found"));
+
+        // trying to get the name of 2 level generations on a family 
+
+		name = fatherOpt.flatMap(Father::getFather).map(Father::getName).orElse("not found");
+
+		// prints "Angel"
+		assertThat(name, equalToIgnoringCase("Angel"));
+		
+		// trying to get the name of 1 level generations on a family 
+		name = fatherOpt.map(Father::getName).orElse("not found");
+		
+		assertThat(name, equalToIgnoringCase("Pepe"));
+		
+//		name = fatherOpt.flatMap(Father::getFather).map(Father::getName).orElseGet(() -> getDefault());
+		
+	}
+	
+	
 
 }
+	
+
