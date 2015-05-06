@@ -21,7 +21,7 @@ public class ComplexTest {
 		PersonFactoryInterface<Person> personFactory = Person::new;
 		Person person = personFactory.create("Angel", "Pepe");
 		assertThat(person.getFirstName(), equalToIgnoringCase("Angel"));
-		assertThat(person.getFirstName(), equalToIgnoringCase("Pepe"));
+		assertThat(person.getLastName(), equalToIgnoringCase("Pepe"));
 
 	}
 
