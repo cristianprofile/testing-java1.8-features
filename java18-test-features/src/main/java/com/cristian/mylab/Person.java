@@ -8,8 +8,8 @@ class Person {
     Person() {}
     
     //Constructor with one parameters
-    Person( String lastName) {
-        this.lastName = lastName;
+    Person( String firstName) {
+        this.firstName = firstName;
     }
     
   //Constructor with two parameters

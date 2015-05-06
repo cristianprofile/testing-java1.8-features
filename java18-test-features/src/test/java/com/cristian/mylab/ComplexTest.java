@@ -16,12 +16,21 @@ public class ComplexTest {
 	public void factoryCreate() {
 
 		
-		//We create a reference to the Person constructor via Person::new. 
-		//The Java compiler automatically chooses the right constructor by matching the signature of PersonFactory.create().
+		//  We create a reference to the Person constructor via Person::new. 
+		//  The Java compiler automatically chooses the right constructor by matching the signature of PersonFactory.create(). 
+		//  In this case constructor with 2 arguments like definition of PersonFactoryInterface create method.
 		PersonFactoryInterface<Person> personFactory = Person::new;
 		Person person = personFactory.create("Angel", "Pepe");
 		assertThat(person.getFirstName(), equalToIgnoringCase("Angel"));
 		assertThat(person.getLastName(), equalToIgnoringCase("Pepe"));
+		
+		
+	    //  In this case constructor with 1 argument like definition of PersonFactoryOneParameterInterface create method.
+		PersonFactoryOneParameterInterface<Person> personFactoryOneParameter =Person::new;
+		
+		person = personFactoryOneParameter.create("Carlos");
+		
+		assertThat(person.getFirstName(), equalToIgnoringCase("Carlos"));
 
 	}
 
