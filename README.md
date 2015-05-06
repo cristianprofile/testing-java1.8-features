@@ -112,5 +112,6 @@ Example:
     System.out.println(converted);    // 123
 
 - Testing new @FunctionalInterface in java 1.8 and default methods [Test @FunctionalInterface](/java18-test-features/src/test/java/com/cristian/mylab/FuncionalInterfaceTest.java#L38)
+- Another complex example to test funcitional interface with static reference to constructor method (Factory pattern)[Create factory pattern with java 1.8](/java18-test-features/src/test/java/com/cristian/mylab/ComplexTest.java#L16)
 
 
