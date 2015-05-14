@@ -224,10 +224,14 @@ public class FlightServiceImpl implements FlightService {
 	public Duration flightDateReduceByDuration(
 			Collection<Flight> flightCollection, LocalDate date) {
 
-		Duration reduceDuration = flightCollection.stream()
-				.map(flight -> flight.getDuration())
-				.reduce(new Duration(0, 0), sumTime());
-		return reduceDuration;
+//		Duration reduceDuration = flightCollection.stream()
+//				.map(flight -> flight.getDuration())
+//				.reduce(new Duration(0, 0), sumTime());
+		
+		Optional<Duration> reduceDuration = flightCollection.stream()
+		.map(flight -> flight.getDuration())
+		.reduce(sumTime());
+		return reduceDuration.get();
 
 	}
 
