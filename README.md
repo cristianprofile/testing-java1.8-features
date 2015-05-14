@@ -114,4 +114,13 @@ Example:
 - Testing new @FunctionalInterface in java 1.8 and default methods [Test @FunctionalInterface](/java18-test-features/src/test/java/com/cristian/mylab/FuncionalInterfaceTest.java#L38)
 - Another complex example to test funcitional interface with static reference to constructor method (Factory pattern)[Create factory pattern with java 1.8](/java18-test-features/src/test/java/com/cristian/mylab/ComplexTest.java#L16)
 
+Testing  Currying in java 1.8 (functions of multiple parameters)
+========================
+
+Currying is the process of transforming a function that takes multiple arguments into a function that takes just a single argument and returns another function if any arguments are still needed. Let's see how to implement this approach in java 1.8:
+
+- Java 1.8 Currying how to [Java 1.8 Currying](/java18-test-features/src/test/java/com/cristian/mylab/ComplexTest.java#L49)
+
+
+
 
