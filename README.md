@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cristianprofile/testing-java1.8-features?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 Testing java 1.8 : I Love functional programming. "Test lambda expression using collections streams".
 ========================
 
