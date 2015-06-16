@@ -1,9 +1,11 @@
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cristianprofile/testing-java1.8-features?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+﻿[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cristianprofile/testing-java1.8-features?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Testing java 1.8 : I Love functional programming. "Test lambda expression using collections streams".
 ========================
 
 Lambda is the most powerfull feature added to java language. Now functions are objects so you can send a function param to a method. This was very commont in other programming languages, and now it is available with a lot changues in apis like collections. Let me show you how easy it is to use this pretty new feature.
+
+![Collection flights example](/image/flights.png?raw=true "Spring Actuator values")
 
 -  Filter a collection with lambda expression using boolean predicate
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L90) and
