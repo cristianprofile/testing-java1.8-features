@@ -96,9 +96,9 @@ public class MapTest {
 
 
     /**
-     *
-     * @param query
-     * @return
+     * Parse url parameters and create map with key values
+     * @param query url parameters to parse
+     * @return map with key values (list of values). Empty map if parameters are incorrect parsed
      */
     private Map<String, List<String>> parseQuery(String query) {
         if (query == null) {
