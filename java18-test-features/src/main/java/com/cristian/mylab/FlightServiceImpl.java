@@ -1,5 +1,7 @@
 package com.cristian.mylab;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Comparator;
@@ -15,8 +17,6 @@ import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class FlightServiceImpl implements FlightService {
@@ -330,6 +330,14 @@ public class FlightServiceImpl implements FlightService {
 						Collectors.summingDouble((Flight flight)->flight.getPrice())));
 
 	}
-	
-	
+
+	@Override
+	public void flightRemoveIfIsCheaperThanHundredEuros(
+			Collection<Flight> flightCollection, Double price) {
+		 flightCollection.removeIf(flight->flight.getPrice()<price);
+
+	}
+
+
+
 }

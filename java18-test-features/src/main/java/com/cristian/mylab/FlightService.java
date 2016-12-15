@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public interface FlightService {
 
@@ -85,13 +84,6 @@ public interface FlightService {
 	public Map<LocalDate, Double> flightGroupByDateSumPrice(
 			Collection<Flight> flightCollection, LocalDate date);
 
-	
-
-
-
-
-
-	
-
-	
+	void flightRemoveIfIsCheaperThanHundredEuros(
+			Collection<Flight> flightCollection, Double price);
 }

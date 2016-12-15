@@ -10,32 +10,35 @@ Lambda is the most powerfull feature added to java language. Now functions are o
 -  Filter a collection with lambda expression using boolean predicate
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L90) and
  [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L65)
- - 
+ -
      `flightCollection.stream().filter(
 				vuelo -> vuelo.getDate().equals((date)));`
 -  Reuse predicates with and or and not logical operator
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L137) and
  [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L82)
  -  
-	` 
+	`
 	 Stream<Flight> filter = flightCollection.stream().filter(
 	 fullFlightPredicate().and(isDatetPredicate(date)));
 	`
-	
+
 -  Use any and all operator to streams (boolean operation)
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L147) and
  [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L90)
  -  ```flightCollection.stream().anyMatch(
 				fullFlightPredicate().and(isDatetPredicate(date)));
 		flightCollection.stream().allMatch(
-				fullFlightPredicate().and(isDatetPredicate(date))); ``` 
--  Use max and min comparator with stream and testing  new optional object, null pointer has death
+				fullFlightPredicate().and(isDatetPredicate(date))); ```
+-Use max and min comparator with stream and testing  new optional object, null pointer has death
 [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L177) and
 [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L110)
  -  ```Optional<Flight> max = flightCollection.stream()
 				.filter(isDatetPredicate(date))
 				.max(byNumPassengers.thenComparing(byNumSeats));```  
 -  Created lambda function declaration to be reused (Lambda function, lambda int function)
+- Use removeIf operation in collections
+[Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L504) and
+[Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L335)  
 -  Use mapToInt and Map to double to test sum and average calculation operation
 [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L278) and
 [Implementation Class method](/java18-test-features/src/main/java/com/cristian/mylab/FlightServiceImpl.java#L170)
@@ -58,7 +61,7 @@ Lambda is the most powerfull feature added to java language. Now functions are o
 					Integer hor = x.getHours() + y.getHours();
 					return new Duration(hor + min / 60, min % 60);
 				});
-		return reduceDuration;` 
+		return reduceDuration;`
 
 - Added foreach consumer to be able to make change to elements of stream. Example method flightDateAddTenPercentAditionalPrice foreach stream iterate
  [Test Class Method](/java18-test-features/src/test/java/com/cristian/mylab/FlightServiceImplTest.java#L348) and
@@ -124,7 +127,3 @@ Testing  Currying in java 1.8 (functions of multiple parameters)
 Currying is the process of transforming a function that takes multiple arguments into a function that takes just a single argument and returns another function if any arguments are still needed. Let's see how to implement this approach in java 1.8:
 
 - Java 1.8 Currying how to [Java 1.8 Currying](/java18-test-features/src/test/java/com/cristian/mylab/ComplexTest.java#L49)
-
-
-
-
