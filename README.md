@@ -139,7 +139,7 @@ https://blog.travis-ci.com/2017-03-30-deploy-maven-travis-ci-packagecloud/
 
 If a label is pushed into the master branch then New artifactifact will be deployed to this artifact repository. It will be available to be used by other projects adding the repository:
 
-<repositories>
+`<repositories>
   <repository>
     <id>packagecloud</id>
     <url>
@@ -152,7 +152,7 @@ If a label is pushed into the master branch then New artifactifact will be deplo
       <enabled>true</enabled>
     </snapshots>
   </repository>
-<repositories>
+<repositories>`
 
 
 https://packagecloud.io/cristianprofile/github
