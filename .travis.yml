@@ -1,5 +1,6 @@
 sudo: false
 language: java
+script: mvn -f java18-test-features test
 jdk:
   - oraclejdk8
 install: true
