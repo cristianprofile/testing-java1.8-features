@@ -128,3 +128,32 @@ Testing  Currying in java 1.8 (functions of multiple parameters)
 Currying is the process of transforming a function that takes multiple arguments into a function that takes just a single argument and returns another function if any arguments are still needed. Let's see how to implement this approach in java 1.8:
 
 - Java 1.8 Currying how to [Java 1.8 Currying](/java18-test-features/src/test/java/com/cristian/mylab/ComplexTest.java#L49)
+
+
+Testing nexus/artictfactory cloud: packagecloud
+========================
+
+Used cloud artifact repository with travis and packagecloud:
+
+https://blog.travis-ci.com/2017-03-30-deploy-maven-travis-ci-packagecloud/
+
+If a label is pushed into the master branch then New artifactifact will be deployed to this artifact repository. It will be available to be used by other projects adding the repository:
+
+<repositories>
+  <repository>
+    <id>packagecloud</id>
+    <url>
+      https://packagecloud.io/cristianprofile/github/maven2
+    </url>
+    <releases>
+      <enabled>true</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+<repositories>
+
+
+https://packagecloud.io/cristianprofile/github
+
