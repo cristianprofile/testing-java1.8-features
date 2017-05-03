@@ -1,0 +1,6 @@
+language: java
+
+jdk:
+  - oraclejdk8
+script:
+       - mvn -f java18-test-features clean install
