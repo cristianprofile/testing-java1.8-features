@@ -11,6 +11,8 @@ Hint: Java Stream Debugger For intellij will help you to be able to understand n
 
 ![Stream Debugger for intellij](/image/stream-debugger-intellij.png?raw=true "Stream Debugger for intellij")
 
+This is the model we are going to use to be able to test new Stream Api
+
 ![Collection flights example](/image/flights.png?raw=true "Spring Actuator values")
 
 -  Filter a collection with lambda expression using boolean predicate
