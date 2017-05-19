@@ -6,6 +6,8 @@ Testing java 1.8 : I Love functional programming. "Test lambda expression using 
 
 Lambda is the most powerfull feature added to java language. Now functions are objects so you can send a function param to a method. This was very commont in other programming languages, and now it is available with a lot changues in apis like collections. Let me show you how easy it is to use this pretty new feature.
 
+Hint: Java Stream Debugger For intellij will help you to be able to understand new java 8 stream api  [Java Stream Debugger for intellij users](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger?platform=hootsuite)
+
 ![Collection flights example](/image/flights.png?raw=true "Spring Actuator values")
 
 -  Filter a collection with lambda expression using boolean predicate
