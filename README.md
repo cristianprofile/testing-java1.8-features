@@ -8,6 +8,9 @@ Lambda is the most powerfull feature added to java language. Now functions are o
 
 Hint: Java Stream Debugger For intellij will help you to be able to understand new java 8 stream api  [Java Stream Debugger for intellij users](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger?platform=hootsuite)
 
+
+![Stream Debugger for intellij](/image/stream-debugger-intellij.png?raw=true "Stream Debugger for intellij")
+
 ![Collection flights example](/image/flights.png?raw=true "Spring Actuator values")
 
 -  Filter a collection with lambda expression using boolean predicate
